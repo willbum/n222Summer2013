@@ -1,6 +1,89 @@
 <html>
 	<head>
+		<title>Anim Example</title>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript">
+
+			var cur_row = 0;
+
+			$(document).ready(function() {
+
+				show_row();
+
+				$(document).keyup(function(e) {
+					console.log( e.which )
+
+					//38 = up
+					//40 = down
+					if(e.which == 38) {
+						cur_row --;
+					} else if (e.which == 40) {
+						cur_row ++;
+					}
+
+					if(cur_row < 0) {
+						cur_row = 1;
+					} else if (cur_row > 1) {
+						cur_row = 0;
+					}
+
+					show_row();
+				});
+
+
+				function show_row() {
+
+					var rows = $(".row");
+
+
+					rows.animate(
+						{
+							opacity: 0
+						}, 
+						700
+					);
+
+					var targRow = $(rows[cur_row]);
+
+					targRow.animate(
+						{
+							opacity: 1
+						},
+						700
+					)
+
+					var targChildren = targRow.children();
+
+					for(var i = 0; i < targChildren.length; i++) {
+						$(targChildren[i]).css("opacity", 0).delay(500 + 500 * i).animate(
+							{
+								opacity: 1
+							},
+							700
+						)
+					}
+
+				}
+
+			})
+		</script>
+		<style type="text/css">
+			.row {
+				height: 200px;
+				width: 100%;
+				background: #996622;
+			}
+
+			.ele {
+				height: 100px;
+				width: 100px;
+				background: #990000;
+				float: left;
+			}
+		</style>
 	</head>
 	<body>
+		<div class="row"><div class='ele'></div><div class='ele'></div></div>
+		<div class="row"><div class='ele'></div><div class='ele'></div></div>
 	</body>
 </html>
