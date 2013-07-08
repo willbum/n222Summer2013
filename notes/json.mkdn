@@ -1,0 +1,70 @@
+JSON
+
+JavaScript Object Notation
+
+//Normal javascript objects
+//"Object literal" - literal meaning it is **specified in code**
+var someObject = {
+  color: "Red",
+  wheels: 3,
+  upholstery: "leather"
+}
+
+//Later on...
+console.log( someObject.color );
+
+//JSON
+//Collection of guitars - simple way
+//var data = new Object();
+//data.guitars = [ "Gibson Les Paul", "Stratocaster", "Telecaster", "Ovation", "Butterfly" ];
+{
+  "guitars": [ "Gibson Les Paul", "Stratocaster", "Telecaster", "Ovation", "Butterfly" ] 
+}
+
+//Guitars are complex
+//So we might want to make a guitar "object"
+//Sample object (in JSON)
+{
+  "make": "Gibson Les Paul",
+  "owner": "BB King",
+  "year": 1964,
+  "pattern": "starbust"
+}
+
+//it can get complex
+//a complex guitar object
+{
+  "make": "Gibson Les Paul",
+  "owners": [ { "name": "BB King",  "yearsOwned": 5 }, 
+              { "name": "John Doe", "yearsOwned": 10 },
+              { "name": "Slash", "yearsOwned": 1 }
+            ],
+  "year": 1964,
+  "pattern": "starbust"
+}
+
+//lets assume the above is stored in a variable "data"
+//how do we see the number of years thet John Doe owned the guitar?
+//console.log( data.owners[1].yearsOwned);
+//How do we see the name of the third owner?
+//console.log( data.owners[2].name );
+
+
+//A collection of movies:
+{
+  "movies": [ 
+    { "title": "Pacific Rim", "date": 2013" },
+    { "title": "THEM", "data": 1954 }
+  ]
+}
+
+
+//how do I log every move title out to the console?
+//movies are in data.movies
+//console.log( data.movies );
+//for(var i = 0; i < data.movies.length; i ++) {
+//  console.log( data.movies[i].title );
+//}
+
+
+
