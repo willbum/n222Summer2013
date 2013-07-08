@@ -8,6 +8,23 @@
 
 			$(document).ready(function() {
 
+				$.getJSON("sampleData.json", function(data){
+					console.log(data);
+					var firstRow = $($(".row")[0]);
+					var secondRow = $($(".row")[1]);
+
+					for( var i = 0; i < data.action.length; i++ ) {
+						firstRow.append("<div class='ele'>" + data.action[i] + "</div>");
+
+					}
+
+					for( var i = 0; i < data.comedy.length; i++ ) {
+						secondRow.append("<div class='ele'>" + data.comedy[i] + "</div>");
+
+					}
+					
+				})
+
 				show_row();
 
 				$(document).keyup(function(e) {
@@ -45,9 +62,10 @@
 
 					var targRow = $(rows[cur_row]);
 
-					targRow.animate(
+					targRow.stop().css("marginLeft", 20).animate(
 						{
-							opacity: 1
+							opacity: 1,
+							marginLeft: 0
 						},
 						700
 					)
@@ -55,9 +73,10 @@
 					var targChildren = targRow.children();
 
 					for(var i = 0; i < targChildren.length; i++) {
-						$(targChildren[i]).css("opacity", 0).delay(500 + 500 * i).animate(
+						$(targChildren[i]).css("opacity", 0).css("marginTop", 0).delay(500 + 500 * i).animate(
 							{
-								opacity: 1
+								opacity: 1,
+								marginTop: 7
 							},
 							700
 						)
@@ -68,13 +87,21 @@
 			})
 		</script>
 		<style type="text/css">
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
 			.row {
+				margin-top: 5px;
+				padding: 20px;
 				height: 200px;
 				width: 100%;
 				background: #996622;
 			}
 
 			.ele {
+				margin: 7px;
 				height: 100px;
 				width: 100px;
 				background: #990000;
@@ -83,7 +110,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="row"><div class='ele'></div><div class='ele'></div></div>
-		<div class="row"><div class='ele'></div><div class='ele'></div></div>
+		<div class="row"></div>
+		<div class="row"></div>
 	</body>
 </html>
