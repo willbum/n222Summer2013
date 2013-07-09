@@ -34,8 +34,10 @@
 					//40 = down
 					if(e.which == 38) {
 						cur_row --;
+						show_row();
 					} else if (e.which == 40) {
 						cur_row ++;
+						show_row();
 					}
 
 					if(cur_row < 0) {
@@ -44,7 +46,7 @@
 						cur_row = 0;
 					}
 
-					show_row();
+					
 				});
 
 
